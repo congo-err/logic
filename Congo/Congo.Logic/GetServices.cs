@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace Congo.Logic
 {
-    public partial class Service
+    public partial class Service : IGetServices
     {
         public HttpClient client;
         // todo : Add url to api

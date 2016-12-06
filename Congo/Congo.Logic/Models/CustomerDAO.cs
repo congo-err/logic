@@ -9,9 +9,10 @@ namespace Congo.Logic.Models
 {
     public class CustomerDAO
     {
-        [Required]
         public int CustomerID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public AccountDAO Account { get; set; }
         public AddressDAO Address { get; set; }
     }

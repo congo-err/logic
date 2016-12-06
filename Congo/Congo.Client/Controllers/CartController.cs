@@ -11,7 +11,11 @@ namespace Congo.Client.Controllers
 {
     public class CartController : ApiController
     {
-        Service svc = new Service();
+        IGetServices sv;
+        public CartController(IGetServices sv)
+        {
+            this.sv = sv;
+        }
 
         // GET: api/Cart
         public IEnumerable<string> Get()
@@ -22,12 +26,22 @@ namespace Congo.Client.Controllers
         // GET: api/Cart/5
         public CartDAO Get(int id)
         {
-            return svc.getCart(id);
+            return sv.getCart(id);
         }
 
         // POST: api/Cart
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post(CartDAO cart)
         {
+            if (ModelState.IsValid)
+            {
+                sv.AddCart(cart);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+
         }
 
         // PUT: api/Cart/5

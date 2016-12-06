@@ -14,5 +14,6 @@ namespace Congo.Logic
         List<ProductDAO> getProducts(int ID);
         CartDAO getCart(int ID);
         List<ProductDAO> getFeaturedItems(int numberOfItems);
+        bool AddCart(CartDAO cart);
     }
 }

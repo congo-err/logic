@@ -9,6 +9,10 @@ namespace Congo.Logic
 {
     public class dumbyService : IGetServices
     {
+        public bool AddCart(CartDAO cart)
+        {
+            return true;
+        }
         public AccountDAO confirmAccount(AccountDAO account)
         {
             AccountDAO acct = new AccountDAO();
@@ -46,6 +50,7 @@ namespace Congo.Logic
             cart.Products.Add(new ProductDAO { ProductID = 1, Name = "hammer", Description = "this is a hammer", Price = decimal.Parse("12.12") });
             return cart;
         }
+
         public List<ProductDAO> getFeaturedItems(int numberOfItems)
         {
             List<ProductDAO> featured = new List<ProductDAO>();

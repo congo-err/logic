@@ -12,6 +12,7 @@ namespace Congo.Client.Controllers
     public class ProductController : ApiController
     {
         Service svc = new Service();
+        dumbyService sv = new dumbyService();
         // GET: api/Product
         public IEnumerable<string> Get()
         {
@@ -21,7 +22,7 @@ namespace Congo.Client.Controllers
         // GET: api/Product/5
         public List<ProductDAO> Get(int id)
         {
-            return svc.getProducts(id);
+            return sv.getProducts(id);
         }
 
         // POST: api/Product
