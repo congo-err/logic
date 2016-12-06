@@ -12,7 +12,6 @@ namespace Congo.Logic
     public partial class Service : IGetServices
     {
         public HttpClient client;
-        // todo : Add url to api
         private string URL = @"http://ec2-34-193-176-76.compute-1.amazonaws.com/congodataservice/";
 
         /// <summary>
@@ -35,27 +34,43 @@ namespace Congo.Logic
             return GetObject<AccountDAO>(URL + "Account/" + id);
         }
 
-
+        /// <summary>
+        /// Grabs the list of categories from the database api
+        /// </summary>
+        /// <returns></returns>
         public List<CategoryDAO> getCategories()
         {
             return GetObject<List<CategoryDAO>>(URL + "category");
         }
 
 
-        //Gets the products based on category ID
+        /// <summary>
+        /// Grabs a list of products given the category ID
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public List<ProductDAO> getProducts(int ID)
         { 
             return GetObject<List<ProductDAO>>(URL + "Products/" + ID);
         }
 
         
+        /// <summary>
+        /// Grabs a cart based on the customerID
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public CartDAO getCart(int ID)
         { 
             return GetObject<CartDAO>(URL + "Cart/" + ID);
         }
 
 
-
+        /// <summary>
+        /// Selects X number of products to return from the database
+        /// </summary>
+        /// <param name="numberOfItems"></param>
+        /// <returns></returns>
         public List<ProductDAO> getFeaturedItems(int numberOfItems)
         {
             Random rnd = new Random();
@@ -70,7 +85,12 @@ namespace Congo.Logic
         }
 
 
-        
+        /// <summary>
+        /// Helper method to handle the http get requests. A generic method that takes a URL and data type it returns
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url"></param>
+        /// <returns></returns>
         private T GetObject<T>(string url) where T : class, new()
         {
             HttpResponseMessage response = client.GetAsync(url).Result;

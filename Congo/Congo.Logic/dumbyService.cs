@@ -15,7 +15,14 @@ namespace Congo.Logic
         }
         public AccountDAO confirmRole(int id)
         {
-            return new AccountDAO();
+            if(id == 2)
+            {
+                return new AccountDAO { UserName = "TestPass", Role = "Customer", AccountID = 2 };
+            }
+            else
+            {
+                return new AccountDAO();
+            }
         }
         public List<CategoryDAO> getCategories()
         {

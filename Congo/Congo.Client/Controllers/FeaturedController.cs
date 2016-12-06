@@ -25,9 +25,17 @@ namespace Congo.Client.Controllers
         }
 
         // GET: api/Featured/5
-        public List<ProductDAO> Get(int id)
+        public HttpResponseMessage Get(int id)
         {
-            return sv.getFeaturedItems(id);
+            var items =  sv.getFeaturedItems(id);
+            if (items[0] == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "Not found" });
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, items);
+            }
         }
 
         // POST: api/Featured

@@ -17,10 +17,19 @@ namespace Congo.Client.Controllers
             this.sv = sv;
         }
 
+
         // GET: api/Category
-        public List<CategoryDAO> Get()
+        public HttpResponseMessage Get()
         {
-            return sv.getCategories();
+            var categories =  sv.getCategories();
+            if (categories[0] == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "Not found" });
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, categories);
+            }
         }
 
         // GET: api/Category/5

@@ -17,6 +17,22 @@ namespace Congo.Test
     public class GetServices_Tests
     {
         [Fact]
+        public void confirmUserRole_Test()
+        {
+            UserRoleController controller = new UserRoleController(new dumbyService());
+            controller.Request = new HttpRequestMessage();
+            controller.Configuration = new HttpConfiguration();
+            var result = controller.Get(2);
+            var result2 = controller.Get(3);
+            var expected = HttpStatusCode.OK;
+            var expected2 = HttpStatusCode.NotFound;
+            var actual = result.StatusCode;
+            var actual2 = result2.StatusCode;
+
+            Assert.Equal(actual, expected);
+            Assert.Equal(actual2, expected2);
+        }
+        [Fact]
         public void GetCart_Test()
         {
             CartController cartcontroller = new CartController(new dumbyService());
@@ -35,8 +51,8 @@ namespace Congo.Test
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
             var result = controller.Get();
-            var expected = 3;
-            var actual = result.Count();
+            var expected = HttpStatusCode.OK;
+            var actual = result.StatusCode;
             Assert.Equal(expected, actual);
         }
 
@@ -47,8 +63,8 @@ namespace Congo.Test
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
             var result = controller.Get(2);
-            var expected = 2;
-            var actual = result.Count();
+            var expected = HttpStatusCode.OK;
+            var actual = result.StatusCode;
             Assert.Equal(expected, actual);
         }
 
@@ -59,8 +75,8 @@ namespace Congo.Test
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
             var result = controller.Get(2);
-            var expected = 2;
-            var actual = result.Count();
+            var expected = HttpStatusCode.OK;
+            var actual = result.StatusCode;
             Assert.Equal(expected, actual);
         }
     }
