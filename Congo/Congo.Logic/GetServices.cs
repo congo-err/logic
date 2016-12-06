@@ -13,7 +13,7 @@ namespace Congo.Logic
     {
         public HttpClient client;
         // todo : Add url to api
-        private string URL;
+        private string URL = @"http://ec2-34-193-176-76.compute-1.amazonaws.com/congodataservice/";
 
         /// <summary>
         /// constructor to initlaize HttpClient
@@ -23,13 +23,17 @@ namespace Congo.Logic
             client = new HttpClient();
         }
 
-        
-        //confirm account exists, login information is correct
-        public AccountDAO confirmAccount(AccountDAO account)
-        {
-            return account;
-        }
 
+
+        /// <summary>
+        /// Grabs an account from the database api
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public AccountDAO confirmRole(int id)
+        {
+            return GetObject<AccountDAO>(URL + "Account/" + id);
+        }
 
 
         public List<CategoryDAO> getCategories()
@@ -46,8 +50,8 @@ namespace Congo.Logic
 
         
         public CartDAO getCart(int ID)
-        {
-            return GetObject<CartDAO>(URL + "Cart");
+        { 
+            return GetObject<CartDAO>(URL + "Cart/" + ID);
         }
 
 

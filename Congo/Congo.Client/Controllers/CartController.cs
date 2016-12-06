@@ -17,6 +17,7 @@ namespace Congo.Client.Controllers
             this.sv = sv;
         }
 
+
         // GET: api/Cart
         public IEnumerable<string> Get()
         {
@@ -24,13 +25,21 @@ namespace Congo.Client.Controllers
         }
 
         // GET: api/Cart/5
-        public CartDAO Get(int id)
+        public HttpResponseMessage Get(int id)
         {
-            return sv.getCart(id);
+            var cart = sv.getCart(id);
+            if(cart.Customer == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new {message = "Not found"});
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, cart);
+            }
         }
 
         // POST: api/Cart
-        public HttpResponseMessage Post(CartDAO cart)
+        public HttpResponseMessage Post(CartProduct cart)
         {
             if (ModelState.IsValid)
             {

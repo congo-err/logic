@@ -68,7 +68,7 @@ namespace Congo.Client.Infrastructure
 
         private void AddBindings()
         {
-            kernel.Bind<IGetServices>().To<dumbyService>();
+            kernel.Bind<IGetServices>().To<Service>();
         }
     }
 }

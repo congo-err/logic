@@ -11,8 +11,13 @@ namespace Congo.Client.Controllers
 {
     public class ProductController : ApiController
     {
-        Service svc = new Service();
-        dumbyService sv = new dumbyService();
+        IGetServices sv;
+        public ProductController(IGetServices sv)
+        {
+            this.sv = sv;
+        }
+
+
         // GET: api/Product
         public IEnumerable<string> Get()
         {

@@ -4,6 +4,7 @@ using Congo.Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +23,45 @@ namespace Congo.Test
             cartcontroller.Request = new HttpRequestMessage();
             cartcontroller.Configuration = new HttpConfiguration();
             var result = cartcontroller.Get(2);
-            var expected = "hammer";
-            var actual = result.Products[0].Name;
+            var expected = HttpStatusCode.OK;
+            var actual = result.StatusCode;
             Assert.Equal(expected, actual);
+        }
 
+        [Fact]
+        public void GetCategories_Test()
+        {
+            CategoryController controller = new CategoryController(new dumbyService());
+            controller.Request = new HttpRequestMessage();
+            controller.Configuration = new HttpConfiguration();
+            var result = controller.Get();
+            var expected = 3;
+            var actual = result.Count();
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void getFeatured_Test()
+        {
+            FeaturedController controller = new FeaturedController(new dumbyService());
+            controller.Request = new HttpRequestMessage();
+            controller.Configuration = new HttpConfiguration();
+            var result = controller.Get(2);
+            var expected = 2;
+            var actual = result.Count();
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void getProducts_Test()
+        {
+            ProductController controller = new ProductController(new dumbyService());
+            controller.Request = new HttpRequestMessage();
+            controller.Configuration = new HttpConfiguration();
+            var result = controller.Get(2);
+            var expected = 2;
+            var actual = result.Count();
+            Assert.Equal(expected, actual);
         }
     }
 }

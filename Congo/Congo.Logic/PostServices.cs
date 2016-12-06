@@ -13,7 +13,7 @@ namespace Congo.Logic
 {
     public partial class Service
     {
-        public bool AddCart(CartDAO cart)
+        public bool AddCart(CartProduct cart)
         {
             return PostObject(URL + "Cart", cart);
         }
@@ -21,6 +21,11 @@ namespace Congo.Logic
         public bool CreateCustomer(CustomerDAO customer)
         {
             return PostObject(URL + "Account", customer);
+        }
+
+        public void removeCartProduct(int id)
+        {
+
         }
 
 

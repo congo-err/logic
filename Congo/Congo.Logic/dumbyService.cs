@@ -13,14 +13,9 @@ namespace Congo.Logic
         {
             return true;
         }
-        public AccountDAO confirmAccount(AccountDAO account)
+        public AccountDAO confirmRole(int id)
         {
-            AccountDAO acct = new AccountDAO();
-            acct.AccountID = 1;
-            acct.UserName = "TestUser";
-            acct.Password = "123456";
-            acct.Role = "user";
-            return acct;
+            return new AccountDAO();
         }
         public List<CategoryDAO> getCategories()
         {
@@ -55,8 +50,13 @@ namespace Congo.Logic
         {
             List<ProductDAO> featured = new List<ProductDAO>();
             featured.Add(new ProductDAO { ProductID = 1, Name = "hammer", Description = "this is a hammer", Price = decimal.Parse("12.12") });
-            featured.Add(new ProductDAO { ProductID = 1, Name = "saw", Description = "this is a saw", Price = decimal.Parse("13.13") });
+            featured.Add(new ProductDAO { ProductID = 2, Name = "saw", Description = "this is a saw", Price = decimal.Parse("13.13") });
             return featured;
+        }
+
+        public bool AddCart(CartProduct cart)
+        {
+            return true;
         }
     }
 }

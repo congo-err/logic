@@ -11,8 +11,12 @@ namespace Congo.Client.Controllers
 {
     public class FeaturedController : ApiController
     {
-        Service svc = new Service();
-        dumbyService sv = new dumbyService();
+        IGetServices sv;
+        public FeaturedController(IGetServices sv)
+        {
+            this.sv = sv;
+        }
+
 
         // GET: api/Featured
         public IEnumerable<string> Get()
@@ -21,9 +25,9 @@ namespace Congo.Client.Controllers
         }
 
         // GET: api/Featured/5
-        public List<ProductDAO> Get(int number)
+        public List<ProductDAO> Get(int id)
         {
-            return sv.getFeaturedItems(number);
+            return sv.getFeaturedItems(id);
         }
 
         // POST: api/Featured

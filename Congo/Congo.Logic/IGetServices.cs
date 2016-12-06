@@ -9,11 +9,11 @@ namespace Congo.Logic
 {
     public interface IGetServices
     {
-        AccountDAO confirmAccount(AccountDAO account);
         List<CategoryDAO> getCategories();
         List<ProductDAO> getProducts(int ID);
         CartDAO getCart(int ID);
         List<ProductDAO> getFeaturedItems(int numberOfItems);
-        bool AddCart(CartDAO cart);
+        bool AddCart(CartProduct cart);
+        AccountDAO confirmRole(int id);
     }
 }

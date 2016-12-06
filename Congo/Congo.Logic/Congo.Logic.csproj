@@ -48,10 +48,12 @@
     <Compile Include="Models\AccountDAO.cs" />
     <Compile Include="Models\AddressDAO.cs" />
     <Compile Include="Models\CartDAO.cs" />
+    <Compile Include="Models\CartProduct.cs" />
     <Compile Include="Models\CategoryDAO.cs" />
     <Compile Include="Models\CustomerDAO.cs" />
     <Compile Include="Models\OrderDAO.cs" />
     <Compile Include="Models\ProductDAO.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="PostServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GetServices.cs" />
