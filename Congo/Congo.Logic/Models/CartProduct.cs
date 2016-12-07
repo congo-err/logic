@@ -9,10 +9,12 @@ namespace Congo.Logic.Models
 {
     public class CartProduct
     {
-        [Required]
+        [Required(ErrorMessage = "Field is required")]
+        [Range(1,int.MaxValue)]
         public int CustomerID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Field is required")]
+        [Range(1,int.MaxValue)]
         public int ProductID { get; set; }
     }
 }

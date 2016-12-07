@@ -41,15 +41,17 @@ namespace Congo.Client.Controllers
         // POST: api/Cart
         public HttpResponseMessage Post(CartProduct cart)
         {
+            this.Validate(cart);
             if (ModelState.IsValid)
             {
-                sv.AddCart(cart);
-                return new HttpResponseMessage(HttpStatusCode.OK);
+                if (sv.AddToCart(cart))
+                {
+                    return new HttpResponseMessage(HttpStatusCode.OK);
+                }
             }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.BadRequest,ModelState);
+            
 
         }
 

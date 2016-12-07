@@ -9,10 +9,6 @@ namespace Congo.Logic
 {
     public class dumbyService : IGetServices
     {
-        public bool AddCart(CartDAO cart)
-        {
-            return true;
-        }
         public AccountDAO confirmRole(int id)
         {
             if(id == 2)
@@ -61,9 +57,21 @@ namespace Congo.Logic
             return featured;
         }
 
-        public bool AddCart(CartProduct cart)
+        public bool AddToCart(CartProduct cart)
         {
-            return true;
+            if(cart.CustomerID == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public Login LogIn(AccountDAO account)
+        {
+            return new Models.Login { };
         }
     }
 }

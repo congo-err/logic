@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeleteServices.cs" />
     <Compile Include="dumbyService.cs" />
     <Compile Include="IGetServices.cs" />
     <Compile Include="Models\AccountDAO.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Models\CartProduct.cs" />
     <Compile Include="Models\CategoryDAO.cs" />
     <Compile Include="Models\CustomerDAO.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\OrderDAO.cs" />
     <Compile Include="Models\ProductDAO.cs" />
     <Compile Include="Models\UserRole.cs" />

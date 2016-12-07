@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Congo.Logic;
+using Congo.Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +11,12 @@ namespace Congo.Client.Controllers
 {
     public class LoginController : ApiController
     {
+        IGetServices sv;
+        public LoginController(IGetServices sv)
+        {
+            this.sv = sv;
+        }
+
         // GET: api/Login
         public IEnumerable<string> Get()
         {
@@ -22,8 +30,24 @@ namespace Congo.Client.Controllers
         }
 
         // POST: api/Login
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post(AccountDAO account)
         {
+            this.Validate(account);
+            
+            if (ModelState.IsValid)
+            {
+                Login login = sv.LogIn(account);
+                if (login.success)
+                {
+                    
+                    return Request.CreateResponse(HttpStatusCode.OK, login);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, login);
+                }
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
         }
 
         // PUT: api/Login/5
