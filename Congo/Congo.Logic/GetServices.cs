@@ -79,10 +79,17 @@ namespace Congo.Logic
             Random rnd = new Random();
             List<ProductDAO> featuredProducts = new List<ProductDAO>();
             List<ProductDAO> AllProducts = GetObject<List<ProductDAO>>(URL + "Product");
+            int[] ChosenNumbers = new int[numberOfItems];
 
             for (int i = 0; i < numberOfItems; i++)
             {
-                featuredProducts.Add(AllProducts[int.Parse(rnd.Next(1,19).ToString())]);
+                var random = rnd.Next(1, AllProducts.Count +1);
+                while (ChosenNumbers.Contains(random))
+                {
+                    random = rnd.Next(1, AllProducts.Count+1);
+                }
+                ChosenNumbers[i] = random;
+                featuredProducts.Add(AllProducts[random-1]);
             }
             return featuredProducts;
         }
