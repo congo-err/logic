@@ -78,11 +78,11 @@ namespace Congo.Logic
         {
             Random rnd = new Random();
             List<ProductDAO> featuredProducts = new List<ProductDAO>();
+            List<ProductDAO> AllProducts = GetObject<List<ProductDAO>>(URL + "Product");
 
             for (int i = 0; i < numberOfItems; i++)
             {
-                rnd.Next(1, 19);
-                featuredProducts.Add(GetObject<ProductDAO>(URL + "Products/" + int.Parse(rnd.ToString())));
+                featuredProducts.Add(AllProducts[int.Parse(rnd.Next(1,19).ToString())]);
             }
             return featuredProducts;
         }
