@@ -51,10 +51,13 @@ namespace Congo.Logic
         /// <returns></returns>
         public List<ProductDAO> getProducts(int ID)
         { 
-            return GetObject<List<ProductDAO>>(URL + "Products/" + ID);
+            return GetObject<List<ProductDAO>>(URL + "Category/" + ID);
         }
 
-        
+        public List<ProductDAO> getProducts()
+        {
+            return GetObject<List<ProductDAO>>(URL + "Product");
+        }
         /// <summary>
         /// Grabs a cart based on the customerID
         /// </summary>

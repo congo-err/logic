@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Congo.Client.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProductController : ApiController
     {
         IGetServices sv;
@@ -19,9 +21,17 @@ namespace Congo.Client.Controllers
 
 
         // GET: api/Product
-        public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            var products = sv.getProducts();
+            if(products[0] == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "No products found" });
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, products);
+            }
         }
 
         // GET: api/Product/5

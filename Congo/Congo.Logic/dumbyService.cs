@@ -57,21 +57,26 @@ namespace Congo.Logic
             return featured;
         }
 
-        public bool AddToCart(CartProduct cart)
+        public CartProduct AddToCart(CartProduct cart)
         {
             if(cart.CustomerID == 0)
             {
-                return false;
+                return new CartProduct { success = false};
             }
             else
             {
-                return true;
+                return new CartProduct { success = true};
             }
         }
 
         public Login LogIn(AccountDAO account)
         {
             return new Models.Login { };
+        }
+
+        public List<ProductDAO> getProducts()
+        {
+            return new List<ProductDAO>();
         }
     }
 }

@@ -11,9 +11,10 @@ namespace Congo.Logic
     {
         List<CategoryDAO> getCategories();
         List<ProductDAO> getProducts(int ID);
+        List<ProductDAO> getProducts();
         CartDAO getCart(int ID);
         List<ProductDAO> getFeaturedItems(int numberOfItems);
-        bool AddToCart(CartProduct cart);
+        CartProduct AddToCart(CartProduct cart);
         AccountDAO confirmRole(int id);
         Login LogIn(AccountDAO account);
     }

@@ -16,5 +16,12 @@ namespace Congo.Logic.Models
         [Required(ErrorMessage = "Field is required")]
         [Range(1,int.MaxValue)]
         public int ProductID { get; set; }
+
+        [Required]
+        [Range(1,int.MaxValue)]
+        public int CartID { get; set; }
+
+        public string message { get; set; }
+        public bool success { get; set; }
     }
 }

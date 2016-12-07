@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace Congo.Logic
 {
@@ -18,9 +19,9 @@ namespace Congo.Logic
         /// </summary>
         /// <param name="cart"></param>
         /// <returns></returns>
-        public bool deleteCartItem(CartProduct cart)
+        public CartProduct deleteCartItem(CartProduct cart)
         {
-            return DeleteObject<CartProduct>(URL + "Cart", cart);
+            return DeleteObject<CartProduct,CartProduct>(URL + "Cart", cart);
         }
 
 
@@ -32,7 +33,7 @@ namespace Congo.Logic
         /// <param name="url"></param>
         /// <param name="extra"></param>
         /// <returns></returns>
-        private bool DeleteObject<T>(string url, T extra) where T : class, new()
+        private X DeleteObject<T,X>(string url, T extra) where T : class, new()
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
             MemoryStream stream = new MemoryStream();
@@ -40,7 +41,8 @@ namespace Congo.Logic
             stream.Position = 0;
             StreamReader reader = new StreamReader(stream);
             HttpResponseMessage response = client.DeleteAsync(url).Result;
-            return response.IsSuccessStatusCode;
+            var decoder = new JavaScriptSerializer();
+            return decoder.Deserialize<X>(response.Content.ReadAsStringAsync().Result);
         }
     }
 }

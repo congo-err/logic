@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Congo.Client.Controllers
 {
+    [EnableCors(origins: "http://34.192.6.56", headers:"*",methods:"*")]
     public class LoginController : ApiController
     {
         IGetServices sv;

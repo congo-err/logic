@@ -25,7 +25,7 @@ namespace Congo.Test
             var actual = result.StatusCode;
             var expected = HttpStatusCode.OK;
 
-            var actual2 = cartcontroller.Post(new CartProduct { CustomerID = 0, ProductID = 2 }).StatusCode;
+            var actual2 = cartcontroller.Post(new CartProduct { CustomerID = 0, ProductID = 2 , success = true}).StatusCode;
             var expected2 = HttpStatusCode.BadRequest;
 
             var actual3 = cartcontroller.Post(new CartProduct { CustomerID = 3 }).StatusCode;

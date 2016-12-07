@@ -44,9 +44,14 @@ namespace Congo.Client.Controllers
             this.Validate(cart);
             if (ModelState.IsValid)
             {
-                if (sv.AddToCart(cart))
+                CartProduct c = sv.AddToCart(cart);
+                if (c.success)
                 {
-                    return new HttpResponseMessage(HttpStatusCode.OK);
+                    return Request.CreateResponse(HttpStatusCode.OK, c);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, c);
                 }
             }
 

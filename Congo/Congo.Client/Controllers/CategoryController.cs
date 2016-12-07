@@ -6,9 +6,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Congo.Logic;
+using System.Web.Http.Cors;
 
 namespace Congo.Client.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CategoryController : ApiController
     {
         IGetServices sv;
