@@ -103,5 +103,26 @@ namespace Congo.Logic
             x.Add(new OrderDAO { OrderID = 1 });
             return x;
         }
+
+        public CartProduct deleteCartItem(int cartid, int productid)
+        {
+            if (cartid == 1)
+            {
+                CartProduct x = new CartProduct { CustomerID = 1, CartID = 1, ProductID =2, success = true };
+                return x;
+            }
+            else
+            {
+                CartProduct y = new CartProduct { CartID = 2 };
+                return y;
+            }
+
+        }
+
+
+        public CartProduct ClearCart(int customerID)
+        {
+            return new CartProduct();
+        }
     }
 }

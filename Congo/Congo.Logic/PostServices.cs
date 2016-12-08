@@ -28,15 +28,6 @@ namespace Congo.Logic
         public Login LogIn(AccountDAO account)
         {
             return PostObject<AccountDAO, Login>(URL + "account/try-login", account);
-            //DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(AccountDAO));
-            //MemoryStream stream = new MemoryStream();
-            //serializer.WriteObject(stream, account);
-            //stream.Position = 0;
-            //StreamReader reader = new StreamReader(stream);
-            //StringContent content = new StringContent(reader.ReadToEnd(), Encoding.UTF8, "application/json");
-            //HttpResponseMessage response = client.PostAsync(URL + "account/try-login", content).Result;
-            //var decoder = new JavaScriptSerializer();
-            //return decoder.Deserialize<Login>(response.Content.ReadAsStringAsync().Result);
         }
 
         private X PostObject<T,X>(string url, T extra) where T : class, new()

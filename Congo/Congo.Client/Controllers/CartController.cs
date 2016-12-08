@@ -26,20 +26,14 @@ namespace Congo.Client.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        [HttpGet]
         // GET: api/Cart/5
-        public HttpResponseMessage Get(int id)
+        public string Get(int id)
         {
-            var cart = sv.getCart(id);
-            if(cart.Customer == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound, new {message = "Not found"});
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, cart);
-            }
+            return string.Empty;
         }
 
+        [HttpPost]
         // POST: api/Cart
         public HttpResponseMessage Post(CartProduct cart)
         {
@@ -68,8 +62,43 @@ namespace Congo.Client.Controllers
         }
 
         // DELETE: api/Cart/5
-        public void Delete(int id)
+        [HttpDelete]
+        public HttpResponseMessage removeCartItem(int cartid, int productid)
         {
+            //this.Validate(cart);
+            if (ModelState.IsValid)
+            {
+                CartProduct c = sv.deleteCartItem(cartid, productid);
+                if (c.success)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, c);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, c);
+                }
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage emptyCart(int customerID)
+        {
+            if(customerID != 0)
+            {
+                CartProduct response = sv.ClearCart(customerID);
+                if (response.success)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, response);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, response);
+                }
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
     }
 }

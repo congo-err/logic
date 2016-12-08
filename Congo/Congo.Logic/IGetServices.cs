@@ -19,5 +19,7 @@ namespace Congo.Logic
         Login LogIn(AccountDAO account);
         List<OrderDAO> getAllOrders();
         List<OrderDAO> CustomerOrderHistory(int customerID);
+        CartProduct deleteCartItem(int cartid, int productid);
+        CartProduct ClearCart(int customerID);
     }
 }

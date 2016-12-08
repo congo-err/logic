@@ -19,12 +19,16 @@ namespace Congo.Logic
         /// </summary>
         /// <param name="cart"></param>
         /// <returns></returns>
-        public CartProduct deleteCartItem(CartProduct cart)
+        public CartProduct deleteCartItem(int cartid, int productid)
         {
-            return DeleteObject<CartProduct,CartProduct>(URL + "Cart", cart);
+            
+            return DeleteObject<CartProduct,CartProduct>(URL + "Cart/"+ cartid + "/" + productid, new CartProduct());
         }
 
-
+        public CartProduct ClearCart(int customerID)
+        {
+            return DeleteObject<CartProduct, CartProduct>(URL + "Cart/" + customerID, new CartProduct());
+        }
 
         /// <summary>
         /// Generic helper method to do http delete operations

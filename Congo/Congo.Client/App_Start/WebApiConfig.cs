@@ -22,6 +22,16 @@ namespace Congo.Client
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "deleteitem",
+                routeTemplate: "api/cart/{cartid}/{productid}",
+                defaults: new { Controller ="Cart" , Action = "removeCartItem"});
+
+            config.Routes.MapHttpRoute(
+                name: "deletecart",
+                routeTemplate: "api/cart/{customerid}",
+                defaults: new { Controller = "Cart", Action = "emptyCart" });
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

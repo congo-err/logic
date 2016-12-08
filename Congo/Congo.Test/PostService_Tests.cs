@@ -59,6 +59,22 @@ namespace Congo.Test
 
         }
 
-        
+        //[Fact]
+        //public void deleteCartProduct_Test()
+        //{
+        //    CartController cartcontroller = new CartController(new dumbyService());
+        //    cartcontroller.Request = new HttpRequestMessage();
+        //    cartcontroller.Configuration = new HttpConfiguration();
+
+        //    var result = cartcontroller.Delete(CustomerID = 1, CartID = 1, ProductID = 2, success = true });
+        //    var actual = result.StatusCode;
+        //    var expected = HttpStatusCode.OK;
+        //    Assert.Equal(actual, expected);
+
+        //    var result2 = cartcontroller.Delete(new CartProduct { });
+        //    var actual2 = result2.StatusCode;
+        //    var expected2 = HttpStatusCode.BadRequest;
+        //    Assert.Equal(actual2, expected2);
+        //}
     }
 }

@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace Congo.Client.Controllers
 {
-    [EnableCors(origins: "http://34.192.6.56", headers:"*",methods:"*")]
+    [EnableCors(origins: "*", headers:"*",methods:"*")]
     public class LoginController : ApiController
     {
         IGetServices sv;
