@@ -54,6 +54,7 @@
     <Compile Include="Models\CustomerDAO.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\OrderDAO.cs" />
+    <Compile Include="Models\OrderRequest.cs" />
     <Compile Include="Models\ProductDAO.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="PostServices.cs" />

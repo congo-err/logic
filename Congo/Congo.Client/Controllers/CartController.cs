@@ -65,7 +65,6 @@ namespace Congo.Client.Controllers
         [HttpDelete]
         public HttpResponseMessage removeCartItem(int cartid, int productid)
         {
-            //this.Validate(cart);
             if (ModelState.IsValid)
             {
                 CartProduct c = sv.deleteCartItem(cartid, productid);

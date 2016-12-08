@@ -12,7 +12,7 @@ namespace Congo.Logic.Models
         public CustomerDAO Customer { get; set; }
         public DateTime OrderDate { get; set; }
         public string StripeID { get; set; }
-        public AddressDAO ShippingAddress { get; set; }
+        public AddressDAO Address { get; set; }
         public List<ProductDAO> Products { get; set; }
     }
 }

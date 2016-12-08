@@ -124,5 +124,10 @@ namespace Congo.Logic
         {
             return new CartProduct();
         }
+
+        public OrderRequest CreateOrder(OrderRequest order)
+        {
+            return order;
+        }
     }
 }

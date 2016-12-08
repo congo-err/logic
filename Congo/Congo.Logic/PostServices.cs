@@ -14,6 +14,21 @@ namespace Congo.Logic
 {
     public partial class Service
     {
+        public OrderRequest CreateOrder(OrderRequest order)
+        {
+            OrderRequest temp = new OrderRequest();
+            temp.ProductIDs = new List<int>();
+            CartDAO stuff = new CartDAO();
+            stuff = getCart(order.CustomerID);
+            temp.CustomerID = order.CustomerID;
+            temp.StripeID = "OR_123";
+            temp.AddressID = stuff.Customer.Address.AddressID;
+            foreach (var item in stuff.Products)
+            {
+                temp.ProductIDs.Add(item.ProductID);
+            }
+            return PostObject<OrderRequest, OrderRequest>(URL + "Order", temp);
+        }
         public CartProduct AddToCart(CartProduct cart)
         {
             return PostObject<CartProduct,CartProduct>(URL + "Cart", cart);

@@ -35,7 +35,7 @@ namespace Congo.Test
         [Fact]
         public void GetCart_Test()
         {
-            CartController cartcontroller = new CartController(new dumbyService());
+            GetCartController cartcontroller = new GetCartController(new dumbyService());
             cartcontroller.Request = new HttpRequestMessage();
             cartcontroller.Configuration = new HttpConfiguration();
             var result = cartcontroller.Get(2);

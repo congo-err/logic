@@ -1,4 +1,5 @@
 ﻿using Congo.Logic;
+using Congo.Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,8 +49,27 @@ namespace Congo.Client.Controllers
         }
 
         // POST: api/Order
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post(OrderRequest order)
         {
+            this.Validate(order);
+            if (ModelState.IsValid)
+            {
+                var o = sv.CreateOrder(order);
+                if(o.Order.Products.Count > 0)
+                {
+                    if (o.Success)
+                    {
+                        sv.ClearCart(order.CustomerID);
+                        return Request.CreateResponse(HttpStatusCode.OK, o);
+                    }
+                }
+                else if (ModelState.IsValid)
+                { 
+                    return Request.CreateResponse(HttpStatusCode.OK, o.Message = "Your cart is empty");
+                }
+                
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
         }
 
         // PUT: api/Order/5
