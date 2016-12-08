@@ -35,6 +35,11 @@ namespace Congo.Client.Controllers
         }
 
         // GET: api/Product/5
+        /// <summary>
+        /// Get the products within a category
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public HttpResponseMessage Get(int id)
         {
             var products =  sv.getProducts(id);

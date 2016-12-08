@@ -69,7 +69,7 @@ namespace Congo.Test
         }
 
         [Fact]
-        public void getProducts_Test()
+        public void getProductsByCategory_Test()
         {
             ProductController controller = new ProductController(new dumbyService());
             controller.Request = new HttpRequestMessage();
@@ -79,5 +79,45 @@ namespace Congo.Test
             var actual = result.StatusCode;
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void getProducts_Test()
+        {
+            ProductController productcontroller = new ProductController(new dumbyService());
+            productcontroller.Request = new HttpRequestMessage();
+            productcontroller.Configuration = new HttpConfiguration();
+
+            var result = productcontroller.Get();
+            var actual = result.StatusCode;
+            var expected = HttpStatusCode.OK;
+            Assert.Equal(actual, expected);
+        }
+
+        [Fact]
+        public void getAllOrders_Test()
+        {
+            OrderController ordercontroller = new OrderController(new dumbyService());
+            ordercontroller.Request = new HttpRequestMessage();
+            ordercontroller.Configuration = new HttpConfiguration();
+
+            var result = ordercontroller.Get();
+            var actual = result.StatusCode;
+            var expected = HttpStatusCode.OK;
+            Assert.Equal(actual, expected);
+        }
+
+        [Fact]
+        public void getCustomerOrderHistory_Test()
+        {
+            OrderController ordercontroller= new OrderController(new dumbyService());
+            ordercontroller.Request = new HttpRequestMessage();
+            ordercontroller.Configuration = new HttpConfiguration();
+
+            var result = ordercontroller.Get();
+            var actual = result.StatusCode;
+            var expected = HttpStatusCode.OK;
+            Assert.Equal(actual, expected);
+        }
+
     }
 }

@@ -71,20 +71,37 @@ namespace Congo.Logic
 
         public Login LogIn(AccountDAO account)
         {
-            return new Models.Login { };
+            if(account.AccountID == 1)
+            {
+                return new Login { account = account, success = true };
+            }
+            if(account.AccountID == 2)
+            {
+                return new Login { account = account, success = false };
+            }
+            else
+            {
+                return new Login { };
+            }
         }
 
         public List<ProductDAO> getProducts()
         {
-            return new List<ProductDAO>();
+            var x =  new List<ProductDAO>();
+            x.Add(new ProductDAO { Name = "123" });
+            return x;
         }
         public List<OrderDAO> getAllOrders()
         {
-            return new List<OrderDAO>();
+            var x = new List<OrderDAO>();
+            x.Add(new OrderDAO { OrderID = 1 });
+            return x;
         }
         public List<OrderDAO> CustomerOrderHistory(int customerID)
         {
-            return new List<OrderDAO>();
+            var x = new List<OrderDAO>();
+            x.Add(new OrderDAO { OrderID = 1 });
+            return x;
         }
     }
 }
