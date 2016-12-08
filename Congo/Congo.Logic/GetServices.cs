@@ -54,6 +54,16 @@ namespace Congo.Logic
             return GetObject<List<ProductDAO>>(URL + "Category/" + ID);
         }
 
+        public List<OrderDAO> getAllOrders()
+        {
+            return GetObject<List<OrderDAO>>(URL + "Order");
+        }
+
+        public List<OrderDAO> CustomerOrderHistory(int customerID)
+        {
+            return GetObject<List<OrderDAO>>(URL + "Order/" + customerID);
+        }
+
         public List<ProductDAO> getProducts()
         {
             return GetObject<List<ProductDAO>>(URL + "Product");

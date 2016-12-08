@@ -13,5 +13,6 @@ namespace Congo.Logic.Models
         public DateTime OrderDate { get; set; }
         public string StripeID { get; set; }
         public AddressDAO ShippingAddress { get; set; }
+        public List<ProductDAO> Products { get; set; }
     }
 }

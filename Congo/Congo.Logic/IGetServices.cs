@@ -17,5 +17,7 @@ namespace Congo.Logic
         CartProduct AddToCart(CartProduct cart);
         AccountDAO confirmRole(int id);
         Login LogIn(AccountDAO account);
+        List<OrderDAO> getAllOrders();
+        List<OrderDAO> CustomerOrderHistory(int customerID);
     }
 }

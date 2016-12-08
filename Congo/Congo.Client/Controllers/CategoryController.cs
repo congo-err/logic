@@ -24,7 +24,7 @@ namespace Congo.Client.Controllers
         public HttpResponseMessage Get()
         {
             var categories =  sv.getCategories();
-            if (categories[0] == null)
+            if (!categories.Any())
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "Not found" });
             }

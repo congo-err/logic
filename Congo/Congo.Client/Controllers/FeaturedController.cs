@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Congo.Client.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class FeaturedController : ApiController
     {
         IGetServices sv;
@@ -28,7 +30,7 @@ namespace Congo.Client.Controllers
         public HttpResponseMessage Get(int id)
         {
             var items =  sv.getFeaturedItems(id);
-            if (items[0] == null)
+            if (!items.Any())
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "Not found" });
             }

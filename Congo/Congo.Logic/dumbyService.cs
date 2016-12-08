@@ -78,5 +78,13 @@ namespace Congo.Logic
         {
             return new List<ProductDAO>();
         }
+        public List<OrderDAO> getAllOrders()
+        {
+            return new List<OrderDAO>();
+        }
+        public List<OrderDAO> CustomerOrderHistory(int customerID)
+        {
+            return new List<OrderDAO>();
+        }
     }
 }

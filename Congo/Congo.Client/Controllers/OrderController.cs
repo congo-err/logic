@@ -1,5 +1,4 @@
 ﻿using Congo.Logic;
-using Congo.Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,54 +10,54 @@ using System.Web.Http.Cors;
 namespace Congo.Client.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class ProductController : ApiController
+    public class OrderController : ApiController
     {
         IGetServices sv;
-        public ProductController(IGetServices sv)
+        public OrderController(IGetServices sv)
         {
             this.sv = sv;
         }
 
 
-        // GET: api/Product
+        // GET: api/Order
         public HttpResponseMessage Get()
         {
-            var products = sv.getProducts();
-            if(!products.Any())
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "No products found" });
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, products);
-            }
-        }
-
-        // GET: api/Product/5
-        public HttpResponseMessage Get(int id)
-        {
-            var products =  sv.getProducts(id);
-            if (!products.Any())
+            var orders = sv.getAllOrders();
+            if (!orders.Any())
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "Not found" });
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.OK, products);
+                return Request.CreateResponse(HttpStatusCode.OK, orders);
             }
         }
 
-        // POST: api/Product
+        // GET: api/Order/5
+        public HttpResponseMessage Get(int id)
+        {
+            var orders = sv.CustomerOrderHistory(id);
+            if(!orders.Any())
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "Not found" });
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, orders);
+            }
+        }
+
+        // POST: api/Order
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/Product/5
+        // PUT: api/Order/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Product/5
+        // DELETE: api/Order/5
         public void Delete(int id)
         {
         }
