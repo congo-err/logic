@@ -13,5 +13,6 @@ namespace Congo.Logic.Models
         public decimal Price { get; set; }
         public string ImagePath { get; set; }
         public string Name { get; set; }
+        public CategoryDAO Category { get; set; }
     }
 }
