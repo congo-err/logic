@@ -1,4 +1,5 @@
 ﻿using Congo.Logic.Models;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,12 +22,25 @@ namespace Congo.Logic
             CartDAO stuff = new CartDAO();
             stuff = getCart(order.CustomerID);
             temp.CustomerID = order.CustomerID;
-            temp.StripeID = "OR_123";
             temp.AddressID = stuff.Customer.Address.AddressID;
+
+            int price = 0;
+
             foreach (var item in stuff.Products)
             {
                 temp.ProductIDs.Add(item.ProductID);
+                price += (int)Math.Floor(item.Price * 100);
             }
+
+            StripeChargeService service = new StripeChargeService();
+            StripeCharge charge = service.Create(new StripeChargeCreateOptions {
+                Currency = "usd",
+                Amount = price,
+                SourceTokenOrExistingSourceId = order.Token
+            });
+
+            temp.StripeID = charge.Id;
+
             return PostObject<OrderRequest, OrderRequest>(URL + "Order", temp);
         }
         public CartProduct AddToCart(CartProduct cart)
