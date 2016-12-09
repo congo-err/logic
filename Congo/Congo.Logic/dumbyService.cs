@@ -129,5 +129,10 @@ namespace Congo.Logic
         {
             return order;
         }
+
+        public ProductDAO GetSingleProduct(int id)
+        {
+            return new ProductDAO();
+        }
     }
 }

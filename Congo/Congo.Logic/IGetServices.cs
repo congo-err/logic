@@ -22,5 +22,6 @@ namespace Congo.Logic
         CartProduct deleteCartItem(int cartid, int productid);
         CartProduct ClearCart(int customerID);
         OrderRequest CreateOrder(OrderRequest order);
+        ProductDAO GetSingleProduct(int id);
     }
 }
