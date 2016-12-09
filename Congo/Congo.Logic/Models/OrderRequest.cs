@@ -14,6 +14,7 @@ namespace Congo.Logic.Models
         public int AddressID { get; set; }
         public string StripeID { get; set; }
         public List<int> ProductIDs { get; set; }
+        public string Token { get; set; }
         public bool Success { get; set; }
         public string Message { get; set; }
         public OrderDAO Order { get; set; }
